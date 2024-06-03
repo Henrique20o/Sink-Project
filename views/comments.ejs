@@ -1,0 +1,124 @@
+<!-- comments.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comments</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 20px;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    #comment-form {
+      max-width: 600px;
+      margin-top: 20px;
+    }
+
+    #comment-form input,
+    #comment-form textarea,
+    #comment-form button {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    #comment-form label {
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    #comment-form textarea {
+      height: 100px;
+    }
+
+    #comment-form button {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      padding: 10px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    #comment-form button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Post Information:</h2>
+  <p>Title: <%= post.title %></p>
+  <p>Content: <%= post.content %></p>
+  <p>Username: <%= post.username %></p>
+  <p>Profile Image: <img src="<%= post.profileimagedir %>" alt="<%= post.username %>'s profile image" width="50" height="50"></p>
+  <p>Date: <%= post.new_date %></p>
+  
+  <h2>Comments</h2>
+  
+  <!-- Loop through comments -->
+  <table>
+    <thead>
+      <tr>
+        <th>Content</th>
+        <th>User</th>
+        <th>Profile Image</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% comments.forEach(comment => { %>
+        <tr>
+          <td><%= comment.content %></td>
+          <td><%= comment.username %></td>
+          <td><img src="<%= comment.profileimagedir %>" alt="<%= comment.username %>'s profile image" width="50" height="50"></td>
+          <td><%= comment.new_date %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+  
+  <!-- Formulário para adicionar comentário -->
+  <form id="comment-form" method="POST" action="/posts/<%= postId %>/comments">
+    <label for="content">Content:</label>
+    <textarea id="content" name="content" placeholder="Content"></textarea>
+  
+    <label for="userId">User ID:</label>
+    <input type="text" id="userId" name="userId" placeholder="User ID">
+  
+    <!-- Certifique-se de que está incluindo o postId no formulário -->
+    <input type="hidden" name="postId" value="<%= postId %>">
+  
+    <button type="submit">Add Comment</button>
+  </form>
+  
+  </body>
+  </html>
+

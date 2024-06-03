@@ -1,0 +1,36 @@
+{
+  "name": "sink-games-academy",
+  "version": "1.0.0",
+  "description": "An app to learn about online competitive games",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js",
+    "dev": "node --watch --no-warnings index.js"
+  },
+  "engines": {
+    "node": "20.9.0"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JhonathanHU3/sink-games-academy.git"
+  },
+  "author": "Grazielle Souza, Henrique Cunha, Ian Oliveira, Jhonathan Pimenta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JhonathanHU3/sink-games-academy/issues"
+  },
+  "homepage": "https://github.com/JhonathanHU3/sink-games-academy#readme",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.38.5",
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "method-override": "^3.0.0",
+    "postgres": "^3.4.3"
+  }
+}

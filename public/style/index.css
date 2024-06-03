@@ -1,0 +1,852 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+html, body {
+  background-color: #000000;
+  width: 100%;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  z-index: 0;
+  background: url('../img/akali_pc.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/*nav*/
+nav {
+  padding-left: 5vw;
+  padding-right: 5vw;
+  padding-top: 2vh;
+  width: 100%;
+  height: 7.5vh;
+  background-color: rgba(0, 0, 0, 0.322);
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  z-index: 200;
+  top: 0;
+}
+
+nav img {
+  height: 6vh;
+}
+
+nav ul {
+  background-color: rgba(60, 60, 70, 0);
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  width: 60vw;
+  justify-content: space-around;
+  padding-top: 1.5vh;
+  padding-right: 1vw;
+  height: 79%;
+  margin-right: 5vw
+}
+
+nav a {
+  text-decoration: none;
+  color: aliceblue;
+  font-weight: 600;
+}
+
+nav button {
+  background-color: blueviolet;
+  padding-right: 10vw;
+  padding: 1vh;
+  border-radius: 4px;
+  border: none;
+  color: aliceblue;
+  font-weight: 600;
+}
+
+nav button:hover {
+  background-color: rgb(199, 151, 244);
+}
+
+nav li:hover {
+  border-bottom: 3px solid blueviolet;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  margin-right: 15vw;
+}
+
+.menu-toggle span {
+  height: 4px;
+  width: 30px;
+  background-color: white;
+  margin: 4px 0;
+  display: block;
+  transition: 0.4s;
+}
+
+/*tumb matricula*/
+
+.tumb-matricula {
+  color: aliceblue;
+  max-width: 500px;
+  min-width: 250px;
+  height: 50vh;
+  padding: 20px;
+  border-radius: 10px;
+  margin-left: 7vw;
+}
+
+.tumb-matricula h1,
+h3,
+p {
+  font-family: 'Silkscreen', sans-serif;
+}
+
+.tumb-matricula h1 {
+  margin-top: 2vh;
+  font-size: 8vh;
+}
+
+.tumb-matricula h3 {
+  font-size: 4vh;
+  margin-top: 5vh;
+}
+
+.tumb-matricula p {
+  letter-spacing: 6px;
+  font-weight: 300;
+  margin-bottom: 2vh;
+  margin-left: 6px;
+  margin-top: 1vh;
+}
+
+.matricule-se {
+  display: flex;
+}
+
+.matricule-se button {
+  margin: 3vh;
+  padding: 2vh;
+  width: 150px;
+  color: aliceblue;
+  font-weight: 800;
+}
+
+#btn1 {
+  background-color: blueviolet;
+  border: 3px solid blueviolet;
+}
+
+#btn2 {
+  border: 3px solid blueviolet;
+  background-color: transparent;
+}
+
+#btn1:hover {
+  background-color: rgb(66, 21, 109);
+  transition: background-color 0.3s ease-in-out;
+}
+
+#btn2:hover {
+  border: 3px solid rgb(181, 133, 226);
+  transition: border-color 0.3s ease-in-out;
+}
+
+/*jogos famosos*/
+
+.ver-catalogo {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: 62vh;
+  margin-top: 200px;
+}
+
+.divis {
+  width: 50vw;
+  height: 80vh;
+  color: white;
+  padding-top: 20vh;
+  text-align: center;
+}
+
+.divis h3 {
+  font-size: 5vh;
+}
+
+.divis h1 {
+  font-size: 10vh;
+  font-family: 'Silkscreen', sans-serif;
+}
+
+.divis {
+  font-size: 4vh;
+}
+
+
+
+.cursos-populares {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 7vh;
+}
+
+.grid-thumbs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 50px;
+}
+
+.grid-thumbs img {
+  width: 100%;
+  height: auto;
+}
+
+.grid-thumbs img:hover {
+  transform: scale(1.03);
+}
+
+/* Media Queries para ajustar o layout em diferentes tamanhos de tela */
+@media (max-width: 1200px) {
+  .grid-thumbs {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 800px) {
+  .grid-thumbs {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 500px) {
+  .grid-thumbs {
+    grid-template-columns: 1fr;
+  }
+}
+
+@keyframes changeBackgroundColor {
+  0% {
+    background-color: red;
+  }
+
+  10% {
+    background-color: orange;
+  }
+
+  20% {
+    background-color: yellow;
+  }
+
+  30% {
+    background-color: green;
+  }
+
+  40% {
+    background-color: blue;
+  }
+
+  50% {
+    background-color: indigo;
+  }
+
+  60% {
+    background-color: violet;
+  }
+
+  70% {
+    background-color: pink;
+  }
+
+  80% {
+    background-color: brown;
+  }
+
+  90% {
+    background-color: gray;
+  }
+
+  100% {
+    background-color: red;
+  }
+}
+
+
+/*cursos populares*/
+.titulo {
+  width: 100%;
+  text-align: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  color: aliceblue;
+  font-family: 'Silkscreen', sans-serif;
+  margin-top: 200px;
+}
+
+.populares {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.card-popular {
+  max-width: 300px;
+  min-width: 200px;
+  height: 450px;
+  background-color: rgb(0, 0, 0);
+  margin: 3vh;
+  box-shadow: 0 2px 0 rgba(255, 255, 255, 0);
+}
+
+.card-popular:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 0 rgba(155, 153, 153, 0.55);
+}
+
+.pop1 {
+  height: 45%;
+  background-color: rgb(0, 0, 0);
+  text-align: center;
+  margin-top: 20px;
+}
+
+.pop2 {
+  height: 50%;
+  background-color: rgb(54, 111, 218);
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  padding: 10px;
+  text-align: center;
+}
+
+.pop2 p {
+  font-size: 2vh;
+  margin-top: 5px;
+}
+
+#card-pop1 {
+  border: 1px solid rgba(224, 15, 15, 0.311);
+}
+
+#card-pop2 {
+  border: 1px solid rgba(224, 210, 15, 0.311);
+}
+
+#card-pop3 {
+  border: 1px solid rgba(15, 18, 224, 0.311);
+}
+
+/*recomendações*/
+@keyframes changeColor {
+  0% {
+    color: red;
+  }
+
+  10% {
+    color: orange;
+  }
+
+  20% {
+    color: yellow;
+  }
+
+  30% {
+    color: green;
+  }
+
+  40% {
+    color: blue;
+  }
+
+  50% {
+    color: indigo;
+  }
+
+  60% {
+    color: violet;
+  }
+
+  70% {
+    color: pink;
+  }
+
+  80% {
+    color: brown;
+  }
+
+  90% {
+    color: gray;
+  }
+
+  100% {
+    color: red;
+  }
+}
+
+.divis button {
+  background-color: blueviolet;
+  width: 150px;
+  height: 40px;
+  color: white;
+  font-weight: 600;
+  border: none;
+  margin: 4vh;
+  animation: changeBackgroundColor 10s infinite;
+}
+
+.divis button:hover {
+  background-color: rgb(173, 126, 216);
+}
+
+
+.jogos-famosos {
+  width: 50vw;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  justify-items: center;
+  padding-top: 3vh;
+  margin-right: 20px;
+  background-color: #000000;
+}
+
+.jogos-famosos img {
+  max-width: 200px;
+  min-width: 80px;
+  height: auto;
+}
+
+.game1 {
+  order: 1;
+  padding-top: 50px;
+}
+
+.game2 {
+  order: 2;
+  padding-bottom: 50px;
+}
+
+.game3 {
+  order: 3;
+  padding-top: 50px;
+}
+
+.game4 {
+  order: 4;
+  padding-bottom: 50px;
+}
+
+.game1:hover,
+.game2:hover,
+.game3:hover,
+.game4:hover {
+  transform: scale(1.2);
+  /* Exemplo: aumenta a escala em 20% ao passar o mouse */
+}
+
+.seta {
+  animation: changeColor 4s infinite;
+}
+
+/*carroseul*/
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+.comments-div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/*grid de comentários*/
+.comments-grid {
+  width: 60vw;
+  min-width: 350px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(3, 1fr));
+  gap: 30px;
+}
+
+.comment {
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: aliceblue;
+}
+
+#comment1 {
+  grid-column: span 3;
+  /* Ocupa todas as 3 colunas */
+  grid-row: span 4;
+  /* Ocupa as linhas 1 a 4 */
+  background-color: rgba(255, 255, 255, 0.043);
+  display: flex;
+  justify-content: space-between;
+  padding: 3vh;
+  border: 1px solid rgba(0, 0, 255, 0.313);
+}
+
+.grid-1-1 {
+  width: 60%;
+}
+
+.grid-1-2 img {
+  max-width: 300px;
+  min-width: 100px;
+}
+
+#comment2 {
+  grid-column: 1;
+  grid-row: span 2;
+  /* Ocupa as linhas 1 e 2 */
+  background-color: rgba(255, 255, 255, 0.034);
+  border: 1px solid rgba(255, 0, 0, 0.311);
+  padding: 4vh;
+}
+
+#comment3 {
+  grid-column: 2;
+  grid-row: span 2;
+  padding: 4vh;
+  background-color: rgba(255, 255, 255, 0.034);
+  border: 1px solid rgba(15, 224, 36, 0.311);
+}
+
+#comment4 {
+  grid-row: span 2;
+  padding: 4vh;
+  background-color: rgba(255, 255, 255, 0.034);
+  border: 1px solid rgba(158, 15, 224, 0.311);
+}
+
+
+@media (max-width: 768px) {
+
+  /* Altere o número de colunas para 1 quando a largura da tela for 768 pixels ou menos */
+  .comments-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Adapte o tamanho ou layout de cada comentário conforme necessário */
+  #comment1 {
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+
+  #comment2,
+  #comment3,
+  #comment4 {
+    grid-column: span 1;
+    grid-row: span 2;
+    height: 30vh;
+  }
+}
+
+#comment4 img {
+  width: 20vw;
+  padding-top: 20px;
+  background-color: #00000000;
+}
+
+.user {
+  padding: 2vh;
+}
+
+.opinião {
+  padding: 2vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 2vh;
+}
+
+
+
+
+footer {
+  background-color: rgb(58, 60, 62);
+  padding: 3vh;
+  text-align: center;
+  margin-top: 20vh;
+  color: aliceblue;
+}
+
+/* Adicionando media queries para ajustar em telas menores */
+@media screen and (max-width: 768px) {
+  .comments-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+  }
+
+  .grid-1-1 {
+    width: 100%;
+  }
+
+  #comment1 img {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .comment {
+    padding: 10px;
+  }
+}
+
+
+
+@media only screen and (max-width: 600px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    text-align: center;
+    position: absolute;
+    top: 60px;
+    background-color: #333;
+    z-index: 1;
+  }
+
+
+  .menu.show-menu {
+    right: 3vh;
+    width: 150px;
+    height: 200px;
+    display: flex;
+    background-image: linear-gradient(90deg, blueviolet blueviolet);
+    background-color: #000000;
+    position: absolute;
+    transition: 0.4s;
+  }
+
+  .menu li {
+    margin: 10px 0;
+  }
+
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .banner {
+    display: block;
+    margin-top: 11vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .banner img {
+    width: 100%;
+  }
+
+  .banner div {
+    width: 100%;
+  }
+
+  .tumb-matricula {
+    top: 10%;
+    left: 0%;
+    background-color: #00000000;
+  }
+
+  .ver-catalogo {
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .divis {
+    width: 100%;
+  }
+
+  .jogos-famosos {
+    width: 100%;
+    gap: 15px;
+  }
+
+  .populares {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: none;
+    padding: none;
+  }
+
+  .card-popular {
+    width: 100%;
+    height: 200px;
+    background-color: rgb(0, 0, 0);
+    margin: 20px;
+    display: flex;
+    border: none;
+  }
+
+  .pop1 {
+    height: 100%;
+    background-color: rgb(0, 0, 0);
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 5vh;
+  }
+
+  .pop1 img {
+    height: 25vh;
+  }
+
+  .pop2 {
+    height: 100%;
+    background-color: rgb(54, 111, 218);
+    border-radius: none;
+  }
+
+}
+
+@media (max-width: 900px) {
+  .carousel-container {
+    width: 200%;
+    height: 70vh;
+  }
+}
+
+
+
+@media (max-width:500px) {
+  .body {
+    overflow-x: hidden;
+  }
+
+  .tumb-matricula {
+    background-color: #ffffff00;
+    color: aliceblue;
+    max-width: 500px;
+    min-width: 250px;
+    height: 40vh;
+    padding-top: 10px;
+    padding-right: 0px;
+    padding-left: 0px;
+    position: absolute;
+    top: 8vh;
+    left: 2vh;
+    z-index: 2;
+    border-radius: 10px;
+  }
+
+  .tumb-matricula h1 {
+    /**/
+    margin-top: 2vh;
+    font-size: 5vh;
+  }
+
+  .tumb-matricula p {
+    letter-spacing: 3px;
+    margin-bottom: 18px;
+    font-weight: 300;
+    margin-bottom: 6vh;
+  }
+
+  .matricule-se button {
+    /**/
+    margin: 1vh;
+    padding: 1vh;
+    width: 130px;
+    color: aliceblue;
+    font-weight: 600;
+  }
+
+
+
+  /*jogos famosos*/
+
+  .ver-catalogo {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 80vh;
+    margin-top: 30px;
+  }
+
+  .divis {
+    padding-top: 2vh;
+  }
+
+  .divis h3 {
+    font-size: 3vh;
+  }
+
+  .divis h1 {
+    font-size: 6vh;
+    font-family: 'Silkscreen', sans-serif;
+  }
+
+  .divis {
+    font-size: 4vh;
+  }
+
+
+  .jogos-famosos img {
+    width: 100px;
+    height: auto;
+  }
+
+  .titulo {
+    margin-top: 100px;
+    margin-bottom: 30px;
+    height: 10vh;
+  }
+
+  /*carrosuel*/
+
+  .carousel-container {
+    width: 220%;
+    height: 50vh;
+    margin-top: 0;
+  }
+
+  .carousel-item {
+    margin-top: 20px;
+    margin-left: 5vh;
+  }
+
+
+  .card-populares-car {
+    background-color: rgba(240, 248, 255, 0.059);
+    max-width: 600px;
+    min-width: 200px;
+    max-height: 250px;
+    padding: 30px;
+    border-radius: 10px;
+    margin-left: 10px;
+  }
+
+
+  /*populares*/
+
+  .populares {
+    width: 100%;
+    display: block;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .card-popular {
+    width: 100%;
+    height: auto;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    box-shadow: 0 2px 0 rgba(255, 255, 255, 0);
+  }
+
+}

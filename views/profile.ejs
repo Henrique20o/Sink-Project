@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style/profile.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <div class="logo">
+      <img src="./img/SINK-removebg-preview.png" alt="sink academy">
+    </div>
+    <div class="menu-toggle" id="mobile-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="menu">
+      <li><a href="/courses">CURSOS</a></li>
+      <li><a href="/home">HOME</a></li>
+      <li><a href="/posts"><button>FORUM</button></a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <div class="perfil-header">
+      <div class="user-profile">
+        <img src="<%= user.profileimagedir %>" alt="Foto de Perfil" class="profile-picture">
+      </div>
+      <div>
+        <h1>
+          <%= user.username %>
+        </h1>
+        <p class="xp">XP: <%= user.xp %>
+        </p>
+        <% if(canEdit) { %>
+          <button class="editButton" onclick="openPopup()">Editar perfil</button>
+
+          <div id="popup">
+            <form method="post" action="/user/<%= user.username %>?_method=PUT">
+              <div>
+                <img id="fotoSelecionada" src="<%= user.profileimagedir %>">
+              </div>
+
+              <input type="hidden" value="<%= user.profileimagedir %>" id="profilePhotoInput" name="profileimagedir" />
+
+              <button class="editPhotoButton" onclick="openModal()">Alterar Foto</button>
+              <br>
+              <div id="myModal" class="modal">
+                <div class="wrapper">
+                  <img src="\img\profileImg\1.jpg" alt="Foto 1" onclick="selectPhoto(1)" />
+                  <img src="\img\profileImg\2.jpg" alt="Foto 2" onclick="selectPhoto(2)" />
+                  <img src="\img\profileImg\3.jpg" alt="Foto 3" onclick="selectPhoto(3)" />
+                  <img src="\img\profileImg\4.jpg" alt="Foto 4" onclick="selectPhoto(4)" />
+                  <img src="\img\profileImg\5.jpg" alt="Foto 5" onclick="selectPhoto(5)" />
+                  <img src="\img\profileImg\6.jpg" alt="Foto 6" onclick="selectPhoto(6)" />
+                  <img src="\img\profileImg\7.jpg" alt="Foto 7" onclick="selectPhoto(7)" />
+                  <img src="\img\profileImg\8.jpg" alt="Foto 8" onclick="selectPhoto(8)" />
+                  <img src="\img\profileImg\9.jpg" alt="Foto 9" onclick="selectPhoto(9)" />
+                  <img src="\img\profileImg\10.jpg" alt="Foto 10" onclick="selectPhoto(10)" />
+                  <img src="\img\profileImg\10.jpg" alt="Foto 10" onclick="selectPhoto(10)" />
+                  <img src="\img\profileImg\10.jpg" alt="Foto 10" onclick="selectPhoto(10)" />
+                </div>
+                <span class="close" onclick="closeModal()">X</span>
+              </div>
+              <label class="labels" for="name">Nome:</label><br>
+              <input type="text" value="<%= user.fullname %>" id="name" name="name" required /><br>
+
+              <label class="labels" for="username">Username:</label><br>
+              <input type="text" value="<%= user.username %>" id="username" name="username" required /><br>
+
+              <label class="labels" for="username">Digite a senha para confirmar:</label><br>
+              <input type="password" id="password" name="password" required /><br>
+
+              <button id="exitButton" class="btn" onclick="closePopup()">Fechar</button>
+              <button class="btn" type="submit">Salvar</button>
+            </form>
+          </div>
+
+          <div id="overlay"></div>
+
+          <script>
+            // Função para abrir o popup
+            function openPopup() {
+              document.getElementById("popup").style.display = "block";
+              document.getElementById("overlay").style.display = "block";
+            }
+
+            // Função para fechar o popup
+            function closePopup() {
+              document.getElementById("popup").style.display = "none";
+              document.getElementById("overlay").style.display = "none";
+            }
+
+            // Função para abrir o modal
+            function openModal(e) {
+              document.getElementById("myModal").style.display = "flex";
+            }
+
+            // Função para fechar o modal
+            function closeModal() {
+              document.getElementById("myModal").style.display = "none";
+            }
+
+            // Função para selecionar a foto
+            document.querySelector(".editPhotoButton").addEventListener("click", function (event) {
+              event.preventDefault();
+            });
+
+            function selectPhoto(photoNumber) {
+              // Suponha que as fotos estejam na mesma pasta do HTML com nomes foto1.jpg, foto2.jpg, etc.
+              const nomeFoto = `${photoNumber}.jpg`;
+              const caminhoFoto = `/img/profileImg/${nomeFoto}`;
+
+              // Atualiza a imagem exibida
+              document.getElementById("fotoSelecionada").src = caminhoFoto;
+
+              // Salva o caminho da foto no input (ou pode salvar outras informações, dependendo das necessidades)
+              document.getElementById("profilePhotoInput").value = caminhoFoto;
+
+              // Fecha o modal após selecionar a foto
+              closeModal();
+            }
+
+            document.querySelector("#exitButton").addEventListener("click", function (event) {
+              event.preventDefault();
+            });
+          </script>
+
+          <% } %>
+      </div>
+    </div>
+
+  </header>
+  <section class="posts">
+    <h1>Postagens:</h1>
+
+<% if(userPosts) { userPosts.forEach(element => { %>
+    <div class="post">
+      <div class="post-profile">
+        <img src="<%= user.profileimagedir %>" alt="">
+        <p><%= user.username %></p>
+      </div>
+
+      <div class="post-title"><%= element.title %></div>
+      <p class="post-content"><%= element.content %></p>
+
+    </div>
+  <% })}; %>
+
+  </section>
+  </main>
+
+
+  <div class="foto_perfil">
+
+    <div class="grid-photos">
+      <div class="photos">
+        <img src="./imgs/mascote_blue.png" alt="Foto de Perfil 1" class="profile-pic">
+      </div>
+      <div class="photos">
+        <img src="./imgs/mascote_red.png" alt="Foto de Perfil 1" class="profile-pic">
+      </div>
+      <div class="photos">
+        <img src="./imgs/mascote_yellow.png" alt="Foto de Perfil 1" class="profile-pic">
+      </div>
+      <div class="photos">
+        <img src="./imgs/mascote_blue.png" alt="Foto de Perfil 1" class="profile-pic">
+      </div>
+      <div class="photos">
+        <img src="./imgs/mascote_red.png" alt="Foto de Perfil 1" class="profile-pic">
+      </div>
+      <div class="photos">
+        <img src="./imgs/mascote_yellow.png" alt="Foto de Perfil 1" class="profile-pic">
+      </div>
+      <div class="photos">
+        <img src="./imgs/mascote_yellow.png" alt="Foto de Perfil 1" class="profile-pic">
+      </div>
+      <div class="photos">
+        <img src="./imgs/mascote_blue.png" alt="Foto de Perfil 1" class="profile-pic">
+      </div>
+      <div class="photos">
+        <img src="./imgs/mascote_red.png" alt="Foto de Perfil 1" class="profile-pic">
+      </div>
+      <!-- Adicione mais itens conforme necessário -->
+    </div>
+  </div>
+
+  <script>
+    var menuToggle = document.getElementById('mobile-menu');
+        var menu = document.querySelector('.menu');
+
+        // Adiciona evento de clique ao ícone do hamburguer
+        menuToggle.addEventListener('click', function () {
+            menu.classList.toggle('show-menu');
+        });
+
+        // Adiciona evento de clique no documento para fechar o menu ao clicar fora
+        document.addEventListener('click', function (event) {
+            var isClickInsideMenu = menu.contains(event.target);
+            var isClickOnMenuToggle = menuToggle.contains(event.target);
+
+            if (!isClickInsideMenu && !isClickOnMenuToggle) {
+                menu.classList.remove('show-menu');
+            }
+        });
+  </script>
+</body>
+
+</html>

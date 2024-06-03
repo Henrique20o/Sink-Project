@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style/geral.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <title>Home</title>
+</head>
+
+<body>
+  <nav>
+    <a href="/user/<%= user.username %>" class="user">
+      <img src="<%= user.profileImageDir %>" class="perfil"></img>
+      <div class="userinfo">
+        <p>
+          <%= user.username %>
+        </p>
+        <p>XP: <%= user.xp %>
+        </p>
+      </div>
+    </a>
+
+    <div class="menu-toggle" id="mobile-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="menu">
+      <li><a href="/courses">MAIS CURSOS</a></li>
+      <li><a href="/posts">FÓRUM</a></li>
+      <li><a href="/home">HOME</a></li>
+    </ul>
+  </nav>
+  <main class="main">
+
+    <div id="popup">
+      <form method="post" action="/posts">
+
+        <label class="labels" for="name">Título:</label><br>
+        <input type="text" id="title" name="title" required /><br>
+
+        <label class="labels" for="username">Conteúdo:</label><br>
+        <input type="text" id="content" name="content" required /><br>
+
+        <label class="labels" for="username">Seleciona qual jogo deseja marcar:</label><br>
+        <select id="game" name="courseId" required>
+          <option value="lol">League of Legends</option>
+          <option value="valorant">Valorant</option>
+          <option value="cs2">Counter-Strike 2</option>
+          <option value="dota2">Dota 2</option>
+          <option value="fortnite">Fortnite</option>
+        </select><br>
+
+        <button id="exitButton" class="btn" onclick="closePopup()">Fechar</button>
+        <button class="btn" type="submit">Salvar</button>
+      </form>
+    </div>
+
+    <div id="overlay"></div>
+
+    <div class="container">
+      <div class="row">
+        <section class="left">
+          <div id="Titulo-posts">
+            <h2>Posts Recentes</h2>
+            <button class="editButton" onclick="openPopup()">Nova postagem</button>
+          </div>
+          <% posts.forEach(post=> { %>
+            <div class="inner-left">
+              <div class="box">
+                <div class="img">
+                  <img src="<%= post.profileimagedir %>" alt="" />
+                </div>
+                <div class="details">
+                  <p>
+                    <%= post.username %>
+                      <%= post.xp %> XP
+                  </p>
+                  <h3>
+                    <%= post.title %>
+                  </h3>
+                  <div class="sub-details">
+                    <span>
+                      <%= post.new_date %>
+                    </span>
+                    <div class="comment">
+                      <i class="fa-solid fa-comment"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% }); %>
+
+        </section>
+        <section class="right">
+          <div class="box first">
+            <% if (currentGame && currentGame.name && currentGame.description) { %>
+              <h3>Tópico <%= currentGame.name %>
+              </h3>
+              <p>
+                <%= currentGame.name==='All' ? 'Frase padrão para mostrar todos os posts' : currentGame.description %>
+              </p>
+              <% } else { %>
+                <% } %>
+          </div>
+          <div class="box top-forums">
+            <h3>Tópicos mais vistos</h3>
+            <a href="#"> <i class="fa-solid fa-arrow-right"></i></a>
+            <div class="inner-box">
+              <h4><a class="forum-link" href="/posts">Todas as Postagens</a></h4>
+              <% topGames.slice(0).forEach(course=> { %>
+                <h4><a class="forum-link" href="/posts/<%= course.name %>">
+                    <%= course.name %>
+                  </a></h4>
+                <% }); %>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Sink Academy Games. Todos os direitos reservados.</p>
+    <p>Contato: contato@sinkacademygames.com</p>
+    <p>Endereço: Rua dos Games, 123 - Cidade Gamer</p>
+    <p>Fundadores: Grazielle Sorrentino - Henrique Pereira - Ian Maciel - Jhonathan Silva</p>
+  </footer>
+
+  <script>
+
+    var menuToggle = document.getElementById('mobile-menu');
+    var menu = document.querySelector('.menu');
+
+    // Adiciona evento de clique ao ícone do hamburguer
+    menuToggle.addEventListener('click', function () {
+      menu.classList.toggle('show-menu');
+    });
+
+    // Adiciona evento de clique no documento para fechar o menu ao clicar fora
+    document.addEventListener('click', function (event) {
+      var isClickInsideMenu = menu.contains(event.target);
+      var isClickOnMenuToggle = menuToggle.contains(event.target);
+
+      if (!isClickInsideMenu && !isClickOnMenuToggle) {
+        menu.classList.remove('show-menu');
+      }
+    });
+
+
+
+    // Função para abrir o popup
+    function openPopup() {
+      document.getElementById("popup").style.display = "block";
+      document.getElementById("overlay").style.display = "block";
+    }
+
+    // Função para fechar o popup
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+      document.getElementById("overlay").style.display = "none";
+    }
+
+    // Função para abrir o modal
+    function openModal(e) {
+      document.getElementById("myModal").style.display = "flex";
+    }
+
+    // Função para fechar o modal
+    function closeModal() {
+      document.getElementById("myModal").style.display = "none";
+    }
+
+    // Função para selecionar a foto
+    document.querySelector(".editPhotoButton").addEventListener("click", function (event) {
+      event.preventDefault();
+    });
+
+    function selectPhoto(photoNumber) {
+      const nomeFoto = `${photoNumber}.jpg`;
+      const caminhoFoto = `/img/profileImg/${nomeFoto}`;
+
+      // Atualiza a imagem exibida
+      document.getElementById("fotoSelecionada").src = caminhoFoto;
+
+      // Salva o caminho da foto no input (ou pode salvar outras informações, dependendo das necessidades)
+      document.getElementById("profilePhotoInput").value = caminhoFoto;
+
+      // Fecha o modal após selecionar a foto
+      closeModal();
+    }
+
+    document.querySelector("#exitButton").addEventListener("click", function (event) {
+      event.preventDefault();
+
+    });
+  </script>
+</body>
+
+</html>

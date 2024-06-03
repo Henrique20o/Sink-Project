@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/video.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+    <link rel="icon" href="img/mascote_sink-removebg-preview.png" type="image/x-icon">
+    <title>Document</title>
+  </head>
+  <body>
+    <nav>
+      <a href="/user/<%= user.username %>" class="user">
+        <img src="<%= user.profileImageDir %>" class="perfil"></img>
+        <div class="userinfo">
+          <p><%= user.username %></p> 
+          <p id="userXp">XP: <%= user.xp %></p>
+        </div>
+      </a>
+
+      <div class="menu-toggle" id="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <ul class="menu">
+        <li><a href="/courses">MAIS CURSOS</a></li>
+        <li><a href="/posts">FÓRUM</a></li>
+        <li><a href="/home">HOME</a></li>
+    </ul>
+    </nav>
+
+    <main>
+      <div id="videoframe">
+        <video data-xp_earned="<%= videoData.xp_earned %>" data-video_id="<%= videoData.id %>" src="<%= videoLink %>" autoplay controls></video>
+      </div>
+
+      <h1 class="title"><%= videoData.title %></h1>
+      <p class="description">
+        <%= videoData.description %>
+      </p>
+    </main>
+
+    <script>
+        var menuToggle = document.getElementById('mobile-menu');
+        var menu = document.querySelector('.menu');
+
+        // Adiciona evento de clique ao ícone do hamburguer
+        menuToggle.addEventListener('click', function () {
+            menu.classList.toggle('show-menu');
+        });
+
+        // Adiciona evento de clique no documento para fechar o menu ao clicar fora
+        document.addEventListener('click', function (event) {
+            var isClickInsideMenu = menu.contains(event.target);
+            var isClickOnMenuToggle = menuToggle.contains(event.target);
+
+            if (!isClickInsideMenu && !isClickOnMenuToggle) {
+                menu.classList.remove('show-menu');
+            }
+        });
+ 
+        document.addEventListener("DOMContentLoaded", function () {
+      let video = document.querySelector("video");
+
+      // Definir o tempo após o qual a requisição POST será feita (em milissegundos)
+      let tempoParaPost = 5000;
+      let postRealizado = false; // Flag para verificar se a requisição já foi realizada
+
+      // Configurar um evento para ser acionado quando o tempo do vídeo for alterado
+      video.addEventListener("timeupdate", function () {
+        // Verificar se o tempo atual do vídeo é maior que o tempo desejado para a requisição POST
+        if (video.currentTime >= tempoParaPost / 1000 && !postRealizado) {
+          // Atrasar a execução do código usando setTimeout
+          setTimeout(function () {
+            // Realizar a requisição POST apenas se ainda não foi realizada
+            if (!postRealizado) {
+              realizarRequisicaoPOST();
+              postRealizado = true; // Marcar a requisição como realizada
+            }
+          }, tempoParaPost);
+        }
+      });
+
+      function realizarRequisicaoPOST() {
+        // Exemplo de dados a serem enviados no corpo da requisição POST
+        let body = {
+          videoId: video.dataset.video_id,
+          earnedXp: parseInt(video.dataset.xp_earned), // Substitua pelo valor correto de XP ganho pelo usuário
+        };
+
+        const request = new XMLHttpRequest();
+        request.open("POST", "/addUserXp", true);
+        request.setRequestHeader("Content-type", "application/json");
+        request.send(JSON.stringify(body));
+
+        request.onload = function () {
+          if(JSON.parse(this.responseText).xp !== undefined) {
+            const userXpParagraph = document.querySelector("#userXp");
+            userXpParagraph.innerHTML = `XP: ${JSON.parse(this.responseText).xp}`;
+          } else {
+            console.log(this.responseText)
+          };
+        };
+
+        return request.responseText;
+      }
+    });
+    </script>
+  </body>
+</html>

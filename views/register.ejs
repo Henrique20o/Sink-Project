@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/cadastro.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
+    <link rel="icon" href="img/mascote_sink-removebg-preview.png" type="image/x-icon">
+    <title>Registro</title>
+</head>
+
+<body>
+
+    <section class="cadastro">
+
+        <div class="cad_description">
+            <img src="./img/SINK-removebg-preview.png" alt="" srcset="">
+
+            <h1>CANSOU DE JOGAR <br> COMO UM NOOB? </h1>
+            <br>
+            <h3>Vem ser pro player <br>com a sink!</h3>
+
+        </div>
+
+        <form action="/register" method="POST">
+            <label for="nomeCompleto">Nome Completo:</label>
+            <input type="text" id="nomeCompleto" name="fullname" required>
+
+            <label for="usuario">Usuário:</label>
+            <input type="text" id="usuario" name="username" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="password" required>
+
+            <div class="btn_cad">
+                <button type="submit">Cadastrar</button>
+            </div>
+
+        </form>
+    </section>
+
+</body>
+
+</html>

@@ -93,14 +93,14 @@ header{
   width: 200px;
   height: 200px; 
   overflow: hidden;
-  border-radius: 100%; /* Torna a borda circular */
+  border-radius: 100%; 
   margin-right: 3%;
 }
 
 .profile-picture {
-  width: 100%; /* Garante que a imagem cubra completamente a área circular */
-  height: auto; /* Mantém a proporção da imagem */
-  display: block; /* Remove espaço extra abaixo da imagem */
+  width: 100%; 
+  height: auto; 
+  display: block; 
 }
 
 
@@ -424,13 +424,13 @@ input {
 }
 @media (min-width: 768px) {
   .grid-item {
-      grid-column: span 1; /* Ocupa duas colunas em telas maiores que 768px */
+      grid-column: span 1; 
   }
 }
 
 @media (min-width: 900px) {
   .grid-item {
-    grid-column: span 2; /* Ocupa duas colunas em telas maiores que 768px */
+    grid-column: span 2; 
 }
 .grid-container {
   width: 90%;

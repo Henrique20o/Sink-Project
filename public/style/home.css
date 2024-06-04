@@ -4,7 +4,8 @@
     text-decoration: none;
 }
 
-body, html {
+body,
+html {
     background-color: rgb(0, 0, 0);
     overflow-x: hidden;
 }
@@ -72,7 +73,7 @@ nav a {
 
 
 @media only screen and (max-width: 900px) {
-    
+
     .div-he {
         display: flex;
         flex-direction: column;
@@ -336,9 +337,32 @@ main {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
+.table-top5 h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
 
+.table-top5 table {
+    width: 30%;
+    margin: 0 auto;
+    margin-top: 30px;
+    border: 2px solid #fff;
+    border-radius: 20px;
+}
 
+th,td {
+    font-family: Silkscreen;
+    padding: 8px;
+    text-align: center;
+}
 
+th {
+    font-family: Silkscreen;
+    color: #fff;
+}
 
 
 @media (max-width: 450px) {

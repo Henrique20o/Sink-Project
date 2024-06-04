@@ -57,3 +57,18 @@ export const getVideoSignedUrl = async (videoId) => {
   }
   return data.signedUrl;
 }
+
+export const getTopVideos = async () => {
+  try {
+    const topVideos = await sql`
+      SELECT id, title, course_id, xp_earned 
+      FROM videos 
+      ORDER BY xp_earned DESC 
+      LIMIT 5;
+    `;
+    return topVideos;
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+};

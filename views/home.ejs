@@ -1,84 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style/home.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
-    <link rel="icon" href="img/mascote_sink-removebg-preview.png" type="image/x-icon">
-    <title>Document</title>
-  </head>
-  <body>
-    <nav>
-      <a href="/user/<%= user.username %>" class="user">
-        <img src="<%= user.profileImageDir %>" class="perfil"></img>
-        <div class="userinfo">
-          <p><%= user.username %></p> 
-          <p>XP: <%= user.xp %></p>
-        </div>
-      </a>
 
-      <div class="menu-toggle" id="mobile-menu">
-        <span></span>
-        <span></span>
-        <span></span>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style/home.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet" />
+  <link rel="icon" href="img/mascote_sink-removebg-preview.png" type="image/x-icon">
+  <title>Document</title>
+</head>
+
+<body>
+  <nav>
+    <a href="/user/<%= user.username %>" class="user">
+      <img src="<%= user.profileImageDir %>" class="perfil"></img>
+      <div class="userinfo">
+        <p>
+          <%= user.username %>
+        </p>
+        <p>XP: <%= user.xp %>
+        </p>
+      </div>
+    </a>
+
+    <div class="menu-toggle" id="mobile-menu">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
     <ul class="menu">
-        <li><a href="/courses">MAIS CURSOS</a></li>
-        <li><a href="/posts">FÓRUM</a></li>
-        <li><a href="/home">HOME</a></li>
+      <li><a href="/courses">MAIS CURSOS</a></li>
+      <li><a href="/posts">FÓRUM</a></li>
+      <li><a href="/home">HOME</a></li>
     </ul>
-    </nav>
+  </nav>
 
-    <header>
-      <div class="div-he">
-        <img src="./img/mascotehd_sink-removebg-preview.png" id="mascote"/>
-        <div class="hi-user">
-          <h1>SEJA BEM VINDO!</h1>
-          <p>Qual vai ser hoje?</p>
-        </div>
+  <header>
+    <div class="div-he">
+      <img src="./img/mascotehd_sink-removebg-preview.png" id="mascote" />
+      <div class="hi-user">
+        <h1>SEJA BEM VINDO!</h1>
+        <p>Qual vai ser hoje?</p>
       </div>
-    </header>
+    </div>
+  </header>
 
-    <main>
-      <h1 class="titulo">CURSOS DISPONÍVEIS</h1>
+  <main>
+    <h1 class="titulo">CURSOS DISPONÍVEIS</h1>
 
-      <div class="courses-grid">
-      <% courses.forEach(course => { %>
-      <a href="/courses/<%= course.id %>">
-      <div class="course-card">
-          <img src="<%= course.imgdir %>" />
-          <h3><%= course.name %></h3>
-        </div>
-    </a>
-    <% }); %>
+    <div class="courses-grid">
+      <% courses.forEach(course=> { %>
+        <a href="/courses/<%= course.id %>">
+          <div class="course-card">
+            <img src="<%= course.imgdir %>" />
+            <h3>
+              <%= course.name %>
+            </h3>
+          </div>
+        </a>
+        <% }); %>
 
-   </div>
-    </main>
+    </div>
+    <div class="table-top5">
+    <h1>Videos mais hypados da semana</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Titulo</th>
+          <th>Curso</th>
+          <th>Xp</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% topVideos.forEach(video=> { %>
+          <tr>
+            <td>
+              <%= video.title %>
+            </td>
+            <td>
+              <%= video.course_id %>
+            </td>
+            <td>
+              <%= video.xp_earned %>
+            </td>
+          </tr>
+          <% }); %>
+      </tbody>
+    </table>
+  </div>
+  </main>
 
-    <script>
-        var menuToggle = document.getElementById('mobile-menu');
-        var menu = document.querySelector('.menu');
+  <script>
+    var menuToggle = document.getElementById('mobile-menu');
+    var menu = document.querySelector('.menu');
 
-        // Adiciona evento de clique ao ícone do hamburguer
-        menuToggle.addEventListener('click', function () {
-            menu.classList.toggle('show-menu');
-        });
+    // Adiciona evento de clique ao ícone do hamburguer
+    menuToggle.addEventListener('click', function () {
+      menu.classList.toggle('show-menu');
+    });
 
-        // Adiciona evento de clique no documento para fechar o menu ao clicar fora
-        document.addEventListener('click', function (event) {
-            var isClickInsideMenu = menu.contains(event.target);
-            var isClickOnMenuToggle = menuToggle.contains(event.target);
+    // Adiciona evento de clique no documento para fechar o menu ao clicar fora
+    document.addEventListener('click', function (event) {
+      var isClickInsideMenu = menu.contains(event.target);
+      var isClickOnMenuToggle = menuToggle.contains(event.target);
 
-            if (!isClickInsideMenu && !isClickOnMenuToggle) {
-                menu.classList.remove('show-menu');
-            }
-        });
- 
-    </script>
-  </body>
+      if (!isClickInsideMenu && !isClickOnMenuToggle) {
+        menu.classList.remove('show-menu');
+      }
+    });
+
+  </script>
+</body>
+
 </html>

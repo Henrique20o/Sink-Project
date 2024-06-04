@@ -1,7 +1,6 @@
 import * as User from "../models/User.js";
 import * as Courses from "../models/Courses.js";
 import * as Post from "../models/Post.js";
-import * as PostModel from "../models/Post.js";
 // Function to render the static index page
 export const renderIndex = (req, res) => {
   return res.render("index");
@@ -26,7 +25,9 @@ export const renderRegisterPage = (req, res) => {
 export const renderHomePage = async (req, res) => {
   const user = req.user;
   const courses = await Courses.getAllCoursesInDb();
-  return res.render("home", { user, courses });
+  const topVideos = await Courses.getTopVideos(); 
+
+  return res.render("home", { user, courses, topVideos });
 };
 
 // Rendering userpage with user credentials
@@ -72,15 +73,15 @@ export const renderVideoPage = async (req, res) => {
   return res.render("video", { user, videoData, videoLink });
 };
 
+
 export const renderForumPage = async (req, res) => {
   try {
     const user = req.user; 
-    const posts = await PostModel.getPostsPaginated(); 
-    const topGames = await PostModel.getTopGames(); 
+    const posts = await Post.getPostsPaginated(); 
+    const topGames = await Post.getTopGames(); 
 
     const currentGame = null; 
 
-    // Renderiza a pagina do forum com os dados
     res.render('forum', { user, posts, topGames, currentGame }); 
   } catch (error) {
     console.error(error);

@@ -13,14 +13,14 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JhonathanHU3/sink-games-academy.git"
+    "url": "git+https://github.com/Henrique20o/Sink-Project.git"
   },
-  "author": "Grazielle Souza, Henrique Cunha, Ian Oliveira, Jhonathan Pimenta",
+  "author": "Henrique Cunha, Christophe, Lucas Henrique",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/JhonathanHU3/sink-games-academy/issues"
+    "url": "https://github.com/Henrique20o/Sink-Project/issues"
   },
-  "homepage": "https://github.com/JhonathanHU3/sink-games-academy#readme",
+  "homepage": "https://github.com/Henrique20o/Sink-Project#readme",
   "dependencies": {
     "@supabase/supabase-js": "^2.38.5",
     "bcrypt": "^5.1.1",

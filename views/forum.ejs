@@ -4,14 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/style/geral.css">
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <link rel="stylesheet" href="/style/forum.css">
   <title>Home</title>
 </head>
 
@@ -102,16 +95,6 @@
 
         </section>
         <section class="right">
-          <div class="box first">
-            <% if (currentGame && currentGame.name && currentGame.description) { %>
-              <h3>Tópico <%= currentGame.name %>
-              </h3>
-              <p>
-                <%= currentGame.name==='All' ? 'Frase padrão para mostrar todos os posts' : currentGame.description %>
-              </p>
-              <% } else { %>
-                <% } %>
-          </div>
           <div class="box top-forums">
             <h3>Tópicos mais vistos</h3>
             <a href="#"> <i class="fa-solid fa-arrow-right"></i></a>
@@ -130,10 +113,10 @@
   </main>
 
   <footer>
-    <p>&copy; 2023 Sink Academy Games. Todos os direitos reservados.</p>
+    <p>&copy; 2024 Sink Academy Games. Todos os direitos reservados.</p>
     <p>Contato: contato@sinkacademygames.com</p>
     <p>Endereço: Rua dos Games, 123 - Cidade Gamer</p>
-    <p>Fundadores: Grazielle Sorrentino - Henrique Pereira - Ian Maciel - Jhonathan Silva</p>
+    <p>Fundadores: Henrique Pereira, Bomfim, Lucas Henrique, Arthur Duarte</p>
   </footer>
 
   <script>
@@ -180,29 +163,7 @@
       document.getElementById("myModal").style.display = "none";
     }
 
-    // Função para selecionar a foto
-    document.querySelector(".editPhotoButton").addEventListener("click", function (event) {
-      event.preventDefault();
-    });
 
-    function selectPhoto(photoNumber) {
-      const nomeFoto = `${photoNumber}.jpg`;
-      const caminhoFoto = `/img/profileImg/${nomeFoto}`;
-
-      // Atualiza a imagem exibida
-      document.getElementById("fotoSelecionada").src = caminhoFoto;
-
-      // Salva o caminho da foto no input (ou pode salvar outras informações, dependendo das necessidades)
-      document.getElementById("profilePhotoInput").value = caminhoFoto;
-
-      // Fecha o modal após selecionar a foto
-      closeModal();
-    }
-
-    document.querySelector("#exitButton").addEventListener("click", function (event) {
-      event.preventDefault();
-
-    });
   </script>
 </body>
 

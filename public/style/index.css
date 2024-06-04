@@ -217,7 +217,32 @@ p {
   transform: scale(1.03);
 }
 
-/* Media Queries para ajustar o layout em diferentes tamanhos de tela */
+
+.onde-nos-encontrar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; 
+  margin: 50px 0;
+  text-align: center; 
+}
+
+.onde-nos-encontrar .endereco {
+  max-width: 40%;
+  margin-right: 20px;
+  color: aliceblue;
+
+}
+
+.onde-nos-encontrar .mapa {
+  max-width: 50%;
+}
+
+.onde-nos-encontrar iframe {
+  width: 100%;
+  height: 100%;
+}
+
 @media (max-width: 1200px) {
   .grid-thumbs {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -233,6 +258,8 @@ p {
 @media (max-width: 500px) {
   .grid-thumbs {
     grid-template-columns: 1fr;
+    width: 90%;
+    justify-content: center;
   }
 }
 
@@ -454,7 +481,6 @@ p {
 .game3:hover,
 .game4:hover {
   transform: scale(1.2);
-  /* Exemplo: aumenta a escala em 20% ao passar o mouse */
 }
 
 .seta {
@@ -491,9 +517,7 @@ body {
 
 #comment1 {
   grid-column: span 3;
-  /* Ocupa todas as 3 colunas */
   grid-row: span 4;
-  /* Ocupa as linhas 1 a 4 */
   background-color: rgba(255, 255, 255, 0.043);
   display: flex;
   justify-content: space-between;
@@ -537,12 +561,10 @@ body {
 
 @media (max-width: 768px) {
 
-  /* Altere o número de colunas para 1 quando a largura da tela for 768 pixels ou menos */
   .comments-grid {
     grid-template-columns: 1fr;
   }
 
-  /* Adapte o tamanho ou layout de cada comentário conforme necessário */
   #comment1 {
     grid-column: span 1;
     grid-row: span 2;
@@ -553,7 +575,6 @@ body {
   #comment4 {
     grid-column: span 1;
     grid-row: span 2;
-    height: 30vh;
   }
 }
 
@@ -584,7 +605,6 @@ footer {
   color: aliceblue;
 }
 
-/* Adicionando media queries para ajustar em telas menores */
 @media screen and (max-width: 768px) {
   .comments-grid {
     grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
@@ -721,7 +741,7 @@ footer {
 
 
 
-@media (max-width:500px) {
+@media (max-width:550px) {
   .body {
     overflow-x: hidden;
   }
@@ -850,3 +870,4 @@ footer {
   }
 
 }
+
